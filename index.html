@@ -1,11 +1,247 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pet Website</title>
+
+    <!-- font awesome link -->
+
+    <script src="https://kit.fontawesome.com/bbfc4be646.js" crossorigin="anonymous"></script>
+
+    <!-- Daisyui link -->
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
+    <header>
+        <nav class="w-11/12 mx-auto  py-3 flex justify-between items-center border-b">
+            <div class="hidden md:hidden lg:hidden dropdown dropdown-left">
+                <div tabindex="0" role="button" class="btn m-1">Click</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                  <li><a>Item 1</a></li>
+                  <li><a>Item 2</a></li>
+                </ul>
+              </div>
+            <div class="logo flex gap-1 w-[100px]">
+                <img src="images/logo.webp" alt="" />
+                <div class="text-2xl font-bold"> Puddy</div>
+            </div>
+            <div class="text-md hidden lg:block md:block " >
+                <ul class="flex  space-x-6">
+                    <li><a href="#" class="hover:text-blue-500">Home</a></li>
+                    <li><a href="#" class="hover:text-blue-500">Services</a></li>
+                    <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="sort">
+                <button class="btn text-xl"><i class="fa-solid fa-person"></i></button>
+            </div>
+
+        </nav>
+
+    </header>
+ 
+      
+
+    <!-- Hero Section -->
+    <section class="bg-white py-12 w-11/12 mx-auto">
+        <div class="container mx-auto text-center">
+            <h4 class="text-gray-500 text-xl">Bringing Families Together❤️‍🔥</h4>
+            <h1 class="text-4xl font-bold mb-4">Your Path to Adoption Starts Here</h1>
+            <p class="text-gray-600 mb-6">Give your companions a loving home. Choose your new best friend today!</p>
+            <button onclick="scrollToSection()" class="btn btn-primary bg-green-400 text-black text-sm border-transparent">View More</button>
+            <div class="mt-8">
+                <img src="images/pet.webp" alt="Adopt a pet" class="mx-auto">
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section -->
+    <section id="adopt_section" class="adopt_section py-8 w-11/12 mx-auto">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-bold mb-6">Adopt Your Best Friend</h1>
+            <p class="text-md">It is a long established fact that a reader will be distracted by the readable content of a page when
+                looking at its layout. The point of using Lorem Ipsum is that it has a.
+            </p>
+        </div>
+    </section>
+
+    <section class="mx-auto pb-5 w-11/12 lg:w-8/12 text-2xl">
+        <div id="category" class=" grid grid-cols-2 lg:grid-cols-4 md:grid-cols-4 justify-center md:space-x-4 lg:space-x-6 lg:gap-0 md:gap-0 gap-4 "  >
+
+        </div>
+        
+    </section>
+
+    <section>
+        <nav class="w-11/12 mx-auto py-3 flex justify-between items-center border-b">
+            <div class="text-2xl font-bold">
+                <h2>Best Deal For You</h2>
+            </div>
+            <div class="sort">
+                <button id="sortButton" class="btn btn-primary text-sm border-transparent hover:bg-green-400 hover:border-transparent hover:text-black">Sort By Price</button>
+            </div>
+        </nav>
+    </section>
     
+    
+        <dialog id="modal-box" class="hidden model bg-transparent">
+            <!-- Modal content goes here -->
+        </dialog>
+    
+    
+<div id="spinner" class="hidden text-center mt-4">
+    <span class="loading loading-bars loading-lg"></span>
+</div>
+
+<section id="pets_Card" class="flex flex-col md:flex-row lg:flex-row pets_Card mx-auto">
+    <div class="lg:w-9/12 md:w-9/12 w-full">
+        <div id="pets" class="card card-compact bg-base-100 shadow-md w-full">
+        </div>
+        <div id="no-data-message" class="hidden bg-gray-100 rounded-xl w-full px-4 mt-3 py-4 text-center">
+            <div class="px-5 py-5">
+               <img src="images/no_info.png" alt="No Information Available" class="w-[200px] mx-auto mb-4" />
+               <h2 class="text-2xl font-bold">No Information Available</h2>
+               <p class="text-gray-500 mt-2 mb-2">
+                   It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+               </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full md:w-3/12 lg:w-3/12">
+        <div id="selected-pets" class="grid grid-cols-2 card border border-gray-100 p-2 card-compact gap-3 border-1">
+        </div>
+    </div>
+</section>
+
+
+
+
+                    <!-- Card -->
+    <div class="hidden max-w-md mx-auto bg-white shadow-lg boder-1 rounded-lg overflow-hidden">
+        <div class="bg-gray-200">
+            <img class="w-full h-56 object-cover" src="images/pet.webp" alt="Pet image">
+        </div>
+        <div class="p-6">
+            <h2 class="text-2xl font-bold mb-2">Alessia Max</h2>
+            <div class="text-gray-600 mb-4">
+                <p><strong>Breed:</strong> Golden Retriever</p>
+                <p><strong>Age:</strong> 2 years (Born: 2024)</p>
+                <p><strong>Gender:</strong> Female</p>
+                <p><strong>Vaccinated:</strong> Yes</p>
+            </div>
+            <div class="text-gray-600 mb-4">
+                <h3 class="font-semibold mb-2">Details Information:</h3>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>It is a long established fact that a reader will be distracted.</li>
+                    <li>The point of using Lorem Ipsum is that it has a normal distribution of letters.</li>
+                </ul>
+            </div>
+            <div class="flex justify-end mt-4">
+                <button class="btn btn-outline">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+        
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+            <h2 class="text-2xl font-bold text-center">Congrats!</h2>
+            <div class="flex justify-center items-center mt-5">
+                <img src="images/hand.png" alt="">
+            </div>
+            <p class="py-2 text-center text-[#111111B3]">You Have Adopt Your Beautiful Friend</p>
+            <h3 class="text-2xl font-bold text-yellow-400 text-center">Successfully</h3>
+            <div id="countdown" class="text-center text-xl font-bold my-4"></div>
+            <div id="" class="modal-action flex justify-center">
+                <div id="Count" class="texl-3xl font-bold "></div>
+            </div>
+    </dialog>   
+     
+    <section class="hidden">
+        <div class="p-6 w-11/12 flex mx-auto">
+            <!-- Card Container -->
+            <div  class="grid grid-cols-3 gap-6 w-3/4">
+              <!-- Card 1 -->
+              <div  id="pets" class="card card-compact bg-base-100 shadow-md">
+              </div>
+            </div>
+          
+            <!-- Right-Side Images Grid-->
+            <div class=" flex flex-col w-1/4 border-1 px-2 ">
+                <h2 class="mb-2 text-black">Fav One</h2>
+              <div class="grid grid-cols-2 gap-4">
+                
+              </div>
+            </div>
+          </div>
+          
+    </section>
+
+  
+
+    <div>
+        <dialog id="my_modal_2" class="modal ">
+            <div id="detailModal"></div>
+            <button onclick="closeModal()">Close</button>
+        </dialog>
+    </div>
+    <!-- Footer -->
+    <footer id="footer" class="bg-gray-900 text-white py-10 mt-6">
+        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-3 sm:mx-auto lg:gap-8  md:gap-8 gap-6  w-10/12 sm:justify-center  ">
+            <!-- Contact Information -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <span class="text-teal-400 mr-2"><img src="images/logo.webp" alt="" srcset=""></span> Peddy
+                </h2>
+                <p>Dhaka,Bangladesh</p>
+                <p>Phone: 8801888225687</p>
+                <p>Email: imtiaztanvir@gmail.com</p>
+                <p>Opening hours: 9:00 AM - 5:00 PM</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-blue-500"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-300"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-red-500"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-pink-500"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Useful Links -->
+            <div>
+                <h2 class="text-xl font-bold mb-4">Useful Links</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">About Us</a></li>
+                    <li><a href="#" class="hover:underline">Animals</a></li>
+                    <li><a href="#" class="hover:underline">Foundation</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Drop a Message -->
+            <div class="">
+                <h2 class="text-xl font-bold mb-4">Drop a Message</h2>
+                <div class="flex flex-col space-y-2">
+                    <input type="email" placeholder="Enter your email" class="input input-bordered w-full bg-gray-800 text-white">
+                    <button class="btn btn-primary">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+   
+
+    <script src="script.js"></script>
+
+    <!-- <script src="test.js"></script> -->
+
+    
+
 </body>
+
 </html>
