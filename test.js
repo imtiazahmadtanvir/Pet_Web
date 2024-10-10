@@ -32,23 +32,29 @@ const displayCategories = (categories) => {
     categories.forEach((item) => {
         
 
+        // Create a button for each category
         const button = document.createElement("button");
         button.classList.add("btn", "btn-outline");
         button.textContent = item.category;
 
-        
+
+
+        // Create image element
         const img = document.createElement("img");
         img.src = item.category_icon;
         img.alt = `${item.category} image`;
         img.classList.add("w-[30px]");
 
+        // Append image and text to the button
         button.appendChild(img);
 
+        // Add event listener to button
         button.addEventListener("click", () => {
             console.log(`Category clicked: ${item.category}`);  
             loadPets(item.category);  
         });
 
+        // Add button to the category container
         categoryContainer.appendChild(button);
 
        
@@ -120,8 +126,8 @@ const displayPets = (pets) => {
                         <h2 class="card-title">${pet.pet_name}</h2>
                         <p><i class="fa-solid fa-gem"></i> Breed: ${pet.breed? pet.breed : "Data not available."}</p>
                         <p><i class="fa-solid fa-cake-candles"></i> Birth: ${pet.date_of_birth? pet.date_of_birth : "Data not available."}</p>
-                        <p><i class="fa-solid fa-mercury"></i> Gender: ${pet.gender? pet.gender : "Data not available."}</p>
-                        <p class="text-lg font-bold text-black-500"><i class="fa-solid fa-money-check-dollar text-sm"></i> Price: ${pet.price? `${pet.price}$` : 'Not available'}</p>
+                        <p><i class="fa-solid fa-mercury"></i> Gender: ${pet.gender? pet.gender : "NoT available."}</p>
+                        <p class="text-lg font-bold text-black-500"><i class="fa-solid fa-money-check-dollar text-sm"></i> Price: ${pet.price? pet.price : "NA"}$</p>
                         <div class="card-actions justify-center gap-5">
                             <button data-image="${pet.image}" class="select-pet btn btn-primary btn-sm bg-transparent text-blue-500 border-0 hover:bg-black rounded-xl "><i class="fa-solid fa-thumbs-up"></i></button>
                             <button onClick="openModal()" class="btn btn-primary btn-sm">Adopt</button>
@@ -240,7 +246,7 @@ const openDetailsModal_2 = (det) => {
 
   
     detailModal.innerHTML = `
-        <div class="modal-box w-11/12 mx-auto p-9">
+        <div class="modal-box w-11/12 mx-auto p-10">
             <div>
                 <figure class="w-full text-center">
                     <img class="w-full rounded-lg" src="${petImage}" alt="${petImage}" />
@@ -251,23 +257,23 @@ const openDetailsModal_2 = (det) => {
 
             <div class="grid grid-cols-2 pt-4 gap-4">
                 <div class="flex gap-2">
-                    <p class="text-gray-220"><i class="fa-solid fa-gem"></i> Breed: ${breed}</p>
+                    <p class="text-[#131313B3]"><i class="fa-solid fa-gem"></i> Breed: ${breed}</p>
                 </div>
                 <div class="flex gap-2">
-                    <p class="text-gray-220"><i class="fa-solid fa-cake-candles"></i> Birth: ${birth}</p>
+                    <p class="text-[#131313B3]"><i class="fa-solid fa-cake-candles"></i> Birth: ${birth}</p>
                 </div>
                 <div class="flex gap-2">
-                    <p class="text-gray-220"><i class="fa-solid fa-mercury"></i> Gender: ${gender}</p>
+                    <p class="text-[#131313B3]"><i class="fa-solid fa-mercury"></i> Gender: ${gender}</p>
                 </div>
                 <div class="flex gap-2">
-                    <p class="text-gray-220"><i class="fa-solid fa-money-check-dollar"></i> Price: ${price}</p>
+                    <p class="text-[#131313B3]"><i class="fa-solid fa-money-check-dollar"></i> Price: ${price}</p>
                 </div>
                 <div class="flex gap-2">
-                    <p class="text-gray-220"><i class="fa-solid fa-comment-medical"></i> Vaccinated status: ${vaccinated}</p>
+                    <p class="text-text-gray-220"><i class="fa-solid fa-comment-medical"></i> Vaccinated status: ${vaccinated}</p>
                 </div>
             </div>
 
-            <div class="divider text-gray-220"></div>
+            <div class="divider text-[#1313131A]"></div>
 
             <h3 class="font-bold pt-2">Details Information</h3>
             <p class="py-4 text-gray-220">
