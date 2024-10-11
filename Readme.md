@@ -69,5 +69,6 @@ categories.forEach((item) => { /* code */ });
 
 <h3>Live link</h3>
 <ol>
-url=https://starlit-pothos-f3ebcb.netlify.app/
+url1=https://imtiazahmadtanvir.github.io/Pet_Web/
+url2=https://venerable-jelly-f5b32f.netlify.app/
 </ol>
