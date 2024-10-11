@@ -164,7 +164,7 @@ const addPetToSelected = (pic) => {
 
 const openModal = () => {
     const showModal = document.getElementById("my_modal_1");
-    const Count = document.getElementById("Count");
+    const Count = document.getElementById("Count").querySelector("h1"); // Find the <h1> inside the #Count div
 
     let count = 4
 
